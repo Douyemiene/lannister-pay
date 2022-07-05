@@ -1,5 +1,5 @@
 export const compute = (req, res) => {
-    const { ID, Amount, Currency, CustomerEmail, SplitInfo } = req.body
+    const { ID, Amount, SplitInfo } = req.body
 
     if (SplitInfo.length < 1 || SplitInfo.length > 20) {
         return res.status(400).json({ message: 'Number of split entities should be between 1 and 20' })

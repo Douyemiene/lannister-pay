@@ -1,13 +1,14 @@
 //Modules
 import express from 'express'
-import { validateComputeReq, sendBadRequestErrorResponse } from './helpers.js'
+import { compute } from './controller.js';
+import { validateComputeReq, handleBadComputeReqError } from './helpers.js'
 
 const router = express.Router()
 
 //Guest Routes
 router.post('/split-payments/compute', validateComputeReq, compute)
 
-router.use(sendBadRequestErrorResponse);
+router.use(handleBadComputeReqError);
 
 
 export default router

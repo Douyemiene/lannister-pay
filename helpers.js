@@ -23,7 +23,7 @@ export const validateComputeReq = validator.body(
     })
 );
 
-export const sendBadRequestErrorResponse = (
+export const handleBadComputeReqError = (
     err,
     req,
     res,
@@ -33,9 +33,8 @@ export const sendBadRequestErrorResponse = (
         const { error } = err;
         let msg = "";
         if (error) {
-            error.details.forEach((d, idx) => {
-                //let formatedMsg = "";
-                let formattedMsg = d.message;
+            error.details.forEach((err, idx) => {
+                let formattedMsg = err.message;
                 if (idx == error.details.length - 1 && idx != 0) {
                     msg += ` and ${formattedMsg}`;
                 } else {
